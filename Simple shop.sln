@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple shop", "Simple shop\Simple shop.csproj", "{0AD6C924-6573-4CA2-97FF-4AA072D1B856}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple_shop", "Simple shop\Simple_shop.csproj", "{0AD6C924-6573-4CA2-97FF-4AA072D1B856}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple shop.Tests", "Simple shop.Tests\Simple shop.Tests.csproj", "{6038157B-5330-45ED-8930-0EF967408616}"
 EndProject

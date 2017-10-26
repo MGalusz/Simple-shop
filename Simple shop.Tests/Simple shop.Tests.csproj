@@ -70,9 +70,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Simple shop\Simple shop.csproj">
+    <ProjectReference Include="..\Simple shop\Simple_shop.csproj">
       <Project>{0AD6C924-6573-4CA2-97FF-4AA072D1B856}</Project>
-      <Name>Simple shop</Name>
+      <Name>Simple_shop</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
