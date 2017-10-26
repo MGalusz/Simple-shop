@@ -22,4 +22,10 @@ namespace Simple_shop.Models
 
         private List<PositionOrder> positionOrder { get; set; }
     }
+
+    public enum OrderState
+    {
+        Nowe,
+        Zrealizowane
+    }
 }
