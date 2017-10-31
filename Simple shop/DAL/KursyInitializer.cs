@@ -4,19 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using Simple_shop.Models;
+using Simple_shop.Migrations;
+using System.Data.Entity.Migrations;
 
 namespace Simple_shop.DAL
 {
-    public class KursyInitializer  : DropCreateDatabaseAlways<CourseContext>
+    public class KursyInitializer  : MigrateDatabaseToLatestVersion<CourseContext, Configuration>
     {
 
-        protected override void Seed(CourseContext context)
-        {
-            SeedKursyData(context);
-            base.Seed(context);
-        }
 
-        private void SeedKursyData(CourseContext context)
+        public static void SeedKursyData(CourseContext context)
         {
             var katerogie = new List<Category>
             {
@@ -68,7 +65,7 @@ namespace Simple_shop.DAL
             };
 
 
-            katerogie.ForEach(k => context.Categories.Add(k));
+            katerogie.ForEach(k => context.Categories.AddOrUpdate(k));
             context.SaveChanges();
 
 
@@ -85,7 +82,7 @@ namespace Simple_shop.DAL
 
             };
 
-            kursy.ForEach(k => context.Courses.Add(k));
+            kursy.ForEach(k => context.Courses.AddOrUpdate(k));
             context.SaveChanges();
         }
     }
