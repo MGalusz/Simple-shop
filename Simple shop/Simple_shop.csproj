@@ -130,6 +130,7 @@
     <Content Include="Content\Kursy\obrazekmvc.png" />
     <Content Include="Content\Kursy\obrazekmvc2.png" />
     <Content Include="Content\Kursy\obrazekxml.png" />
+    <Content Include="Content\Prototype.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
