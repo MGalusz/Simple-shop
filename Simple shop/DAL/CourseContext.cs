@@ -14,6 +14,11 @@ namespace Simple_shop.DAL
         {
             
         }
+
+        static CourseContext()
+        {
+            Database.SetInitializer<CourseContext>(new KursyInitializer());
+        }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Orders> Orderss { get; set; }

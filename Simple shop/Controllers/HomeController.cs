@@ -15,9 +15,7 @@ namespace Simple_shop.Controllers
         private  CourseContext db = new CourseContext();
         public ActionResult Index()
         {
-            Category  Cat = new Category{nameCategory = "ASP>NET MVC", FileNameIcons = "ASPMVC.png", DescCategory = "opis"};
-            db.Categories.Add(Cat);
-            db.SaveChanges();
+            var listaCatt = db.Categories.ToList();
             return View();
         }
     }
