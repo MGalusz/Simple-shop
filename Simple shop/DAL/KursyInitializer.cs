@@ -9,7 +9,7 @@ using System.Data.Entity.Migrations;
 
 namespace Simple_shop.DAL
 {
-    public class KursyInitializer  : MigrateDatabaseToLatestVersion<CourseContext, Configuration>
+    public class KursyInitializer : MigrateDatabaseToLatestVersion<CourseContext, Configuration>
     {
 
 
@@ -21,45 +21,51 @@ namespace Simple_shop.DAL
                 {
                     CategoryId = 1,
                     nameCategory = "asp",
-                    FileNameIcons = "Asp.png",
+                    FileNameIcons = "obrazekaspnet.png",
                     DescCategory = "opis asp ney mvc"
                 },
                 new Category()
                 {
                     CategoryId = 2,
                     nameCategory = "Java",
-                    FileNameIcons = "Java.png",
+                    FileNameIcons = "obrazekjavascript.png",
                     DescCategory = "opis Java"
                 },
                 new Category()
                 {
                     CategoryId = 3,
                     nameCategory = "php",
-                    FileNameIcons = "php.png",
+                    FileNameIcons = "obrazekjquery.png",
                     DescCategory = "opis php"
                 },
                 new Category()
                 {
                     CategoryId = 4,
                     nameCategory = "html",
-                    FileNameIcons = "html.png",
+                    FileNameIcons = "obrazekhtml.png",
                     DescCategory = "opis html"
                 },
                 new Category()
                 {
                     CategoryId = 4,
                     nameCategory = "Css",
-                    FileNameIcons = "Css.png",
+                    FileNameIcons = "obrazekcss.png",
                     DescCategory = "opis Css"
                 },
                 new Category()
                 {
                     CategoryId = 4,
                     nameCategory = "xml",
-                    FileNameIcons = "xml.png",
+                    FileNameIcons = "obrazekxml.png",
                     DescCategory = "opis xml"
                 },
-                new Category() {CategoryId = 4, nameCategory = "C#", FileNameIcons = "C#.png", DescCategory = "C# xml"},
+                new Category()
+                {
+                    CategoryId = 5,
+                    nameCategory = "C#",
+                    FileNameIcons = "obrazekcsharp.png",
+                    DescCategory = "C# xml"
+                },
 
 
             };
@@ -69,15 +75,15 @@ namespace Simple_shop.DAL
             context.SaveChanges();
 
 
-            var kursy  = new List<Course>
+            var kursy = new List<Course>
             {
-                new Course(){AuthorCourse = "Tomek", TitleCourse = "Asp.net mvc",CategoryId = 1,Price = 99 , Bestseller = true , ImgName = "asp.jpg",
+                new Course(){AuthorCourse = "Tomek", TitleCourse = "Asp.net mvc",CategoryId = 1,Price = 99 , Bestseller = true , ImgName = "obrazekcsharp.png",
                     AddDate = DateTime.Now, Desc = "opis Kursu"},
-                new Course(){AuthorCourse = "Jacek", TitleCourse = "Asp.net mvc2",CategoryId = 1,Price = 100 , Bestseller = true , ImgName = "asp.jpg",
+                new Course(){AuthorCourse = "Jacek", TitleCourse = "Asp.net mvc2",CategoryId = 1,Price = 100 , Bestseller = true , ImgName = "obrazekxml.png",
                     AddDate = DateTime.Now, Desc = "opis Kursu"},
-                new Course(){AuthorCourse = "Irek", TitleCourse = "Asp.net mvc1",CategoryId = 1,Price = 120 , Bestseller = true , ImgName = "asp.jpg",
+                new Course(){AuthorCourse = "Irek", TitleCourse = "Asp.net mvc1",CategoryId = 1,Price = 120 , Bestseller = false , ImgName = "obrazekcsharp.png",
                     AddDate = DateTime.Now, Desc = "opis Kursu"},
-                new Course(){AuthorCourse = "romek", TitleCourse = "Asp.net mvc4",CategoryId = 1,Price = 150 , Bestseller = true , ImgName = "asp.jpg",
+                new Course(){AuthorCourse = "romek", TitleCourse = "Asp.net mvc4",CategoryId = 1,Price = 150 , Bestseller = false , ImgName = "obrazekcss.png",
                     AddDate = DateTime.Now, Desc = "opis Kursu"},
 
             };
