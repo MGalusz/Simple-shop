@@ -77,13 +77,13 @@ namespace Simple_shop.DAL
 
             var kursy = new List<Course>
             {
-                new Course(){AuthorCourse = "Tomek", TitleCourse = "Asp.net mvc",CategoryId = 1,Price = 99 , Bestseller = true , ImgName = "obrazekcsharp.png",
+                new Course(){ CourseId = 1 ,AuthorCourse = "Tomek", TitleCourse = "Asp.net mvc",CategoryId = 1,Price = 99 , Bestseller = true , ImgName = "obrazekcsharp.png",
                     AddDate = DateTime.Now, Desc = "opis Kursu"},
-                new Course(){AuthorCourse = "Jacek", TitleCourse = "Asp.net mvc2",CategoryId = 1,Price = 100 , Bestseller = true , ImgName = "obrazekxml.png",
+                new Course(){ CourseId = 2 , AuthorCourse = "Jacek", TitleCourse = "Asp.net mvc2",CategoryId = 1,Price = 100 , Bestseller = true , ImgName = "obrazekxml.png",
                     AddDate = DateTime.Now, Desc = "opis Kursu"},
-                new Course(){AuthorCourse = "Irek", TitleCourse = "Asp.net mvc1",CategoryId = 1,Price = 120 , Bestseller = false , ImgName = "obrazekcsharp.png",
+                new Course(){ CourseId = 3 ,AuthorCourse = "Irek", TitleCourse = "Asp.net mvc1",CategoryId = 1,Price = 120 , Bestseller = false , ImgName = "obrazekcsharp.png",
                     AddDate = DateTime.Now, Desc = "opis Kursu"},
-                new Course(){AuthorCourse = "romek", TitleCourse = "Asp.net mvc4",CategoryId = 1,Price = 150 , Bestseller = false , ImgName = "obrazekcss.png",
+                new Course(){ CourseId = 4 , AuthorCourse = "romek", TitleCourse = "Asp.net mvc4",CategoryId = 1,Price = 150 , Bestseller = false , ImgName = "obrazekcss.png",
                     AddDate = DateTime.Now, Desc = "opis Kursu"},
 
             };

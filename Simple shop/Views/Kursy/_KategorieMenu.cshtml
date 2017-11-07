@@ -1,0 +1,21 @@
+﻿@using Simple_shop.Infrastructure
+@model IEnumerable<Simple_shop.Models.Category>
+
+
+<div id="ListaKategoriZawartosc">
+    <nav class="KategorieVertical">
+        <ul>
+            
+            @foreach (var kategorie in Model)
+            {
+                <li>
+                    <a href="@Url.Action("Lista","Kursy", new {nazwaKategori = kategorie.nameCategory.ToString()})"
+                       style="background-image: url(@Url.ikonyKategoriiSciezka(kategorie.FileNameIcons));">
+                        @kategorie.nameCategory
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+
+</div>

@@ -1,0 +1,28 @@
+﻿@using Simple_shop.Infrastructure
+@model  IEnumerable<Simple_shop.Models.Course>
+
+
+<ul class="KursyTrzyKolumny KursCena">
+    @foreach (var kurs in Model)
+    {
+        <li>
+            <article>
+                <a class="dodajDoKoszykaLink" href="@Url.Action("DodajDoKoszyka","Koszyk", new { id = kurs.CourseId})">
+                    <img src="@Url.Content("~/Content/Images/koszyk.png")" />
+                </a>
+                @if (kurs.Bestseller)
+                {
+                    <div class="bestsellerFlag"></div>
+                }
+                <a class="kursSzczegolyLink" href="@Url.Action("Sczegoly","Kursy", new {id = kurs.CourseId})">
+                    <img class="kurs" src="@Url.ObrazkiiiSciezka(kurs.ImgName)" />
+                    <h1>
+                        @kurs.AuthorCourse - @kurs.TitleCourse
+                    </h1>
+                </a>
+            </article>
+        </li>
+    }
+
+</ul>
+
