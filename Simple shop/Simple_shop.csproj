@@ -50,15 +50,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Glimpse.AspNet, Version=1.9.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Glimpse.AspNet.1.9.2\lib\net45\Glimpse.AspNet.dll</HintPath>
-    </Reference>
-    <Reference Include="Glimpse.Core, Version=1.8.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Glimpse.1.8.6\lib\net45\Glimpse.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Glimpse.Mvc5, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -178,35 +169,22 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KoszykController.cs" />
     <Compile Include="Controllers\KursyController.cs" />
-    <Compile Include="DAL\CourseContext.cs" />
+    <Compile Include="DAL\KursyContext.cs" />
     <Compile Include="DAL\KursyInitializer.cs" />
-    <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AppConfig.cs" />
     <Compile Include="Infrastructure\UrlHelpers.cs" />
-    <Compile Include="Migrations\201710310857461_InitialCreate.cs" />
-    <Compile Include="Migrations\201710310857461_InitialCreate.Designer.cs">
-      <DependentUpon>201710310857461_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710311002254_addFieldShortDesc.cs" />
-    <Compile Include="Migrations\201710311002254_addFieldShortDesc.Designer.cs">
-      <DependentUpon>201710311002254_addFieldShortDesc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710311032159_%27DodaniePolaTest%27.cs" />
-    <Compile Include="Migrations\201710311032159_%27DodaniePolaTest%27.Designer.cs">
-      <DependentUpon>201710311032159_%27DodaniePolaTest%27.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710311033414_usunieciePolaTest.cs" />
-    <Compile Include="Migrations\201710311033414_usunieciePolaTest.Designer.cs">
-      <DependentUpon>201710311033414_usunieciePolaTest.cs</DependentUpon>
+    <Compile Include="Migrations\201711071501224_inicjalizacja.cs" />
+    <Compile Include="Migrations\201711071501224_inicjalizacja.Designer.cs">
+      <DependentUpon>201711071501224_inicjalizacja.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Course.cs" />
-    <Compile Include="Models\Orders.cs" />
-    <Compile Include="Models\PositionOrder.cs" />
+    <Compile Include="Models\Kategoria.cs" />
+    <Compile Include="Models\Kurs.cs" />
+    <Compile Include="Models\Zamowienie.cs" />
+    <Compile Include="Models\PozycjaZamowienia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\HomeVM.cs" />
   </ItemGroup>
@@ -239,17 +217,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710310857461_InitialCreate.resx">
-      <DependentUpon>201710310857461_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710311002254_addFieldShortDesc.resx">
-      <DependentUpon>201710311002254_addFieldShortDesc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710311032159_%27DodaniePolaTest%27.resx">
-      <DependentUpon>201710311032159_%27DodaniePolaTest%27.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710311033414_usunieciePolaTest.resx">
-      <DependentUpon>201710311033414_usunieciePolaTest.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711071501224_inicjalizacja.resx">
+      <DependentUpon>201711071501224_inicjalizacja.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

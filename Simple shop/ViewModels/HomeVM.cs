@@ -8,8 +8,8 @@ namespace Simple_shop.ViewModels
 {
     public class HomeVM
     {
-        public  IEnumerable<Category> kategorie { get; set; }
-        public  IEnumerable<Course> Nowosci { get; set; }
-        public  IEnumerable<Course> Bestsellery { get; set; }
+        public  IEnumerable<Kategoria> kategorie { get; set; }
+        public  IEnumerable<Kurs> Nowosci { get; set; }
+        public  IEnumerable<Kurs> Bestsellery { get; set; }
     }
 }

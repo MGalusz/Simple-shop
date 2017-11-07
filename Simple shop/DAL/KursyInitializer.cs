@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data.Entity;
 using Simple_shop.Models;
 using Simple_shop.Migrations;
@@ -9,86 +7,54 @@ using System.Data.Entity.Migrations;
 
 namespace Simple_shop.DAL
 {
-    public class KursyInitializer : MigrateDatabaseToLatestVersion<CourseContext, Configuration>
+    public class KursyInitializer : MigrateDatabaseToLatestVersion<KursyContext, Configuration>
     {
 
 
-        public static void SeedKursyData(CourseContext context)
+        public static void SeedKursyData(KursyContext context)
         {
-            var katerogie = new List<Category>
+            var kategorie = new List<Kategoria>
             {
-                new Category()
-                {
-                    CategoryId = 1,
-                    nameCategory = "asp",
-                    FileNameIcons = "obrazekaspnet.png",
-                    DescCategory = "opis asp ney mvc"
-                },
-                new Category()
-                {
-                    CategoryId = 2,
-                    nameCategory = "Java",
-                    FileNameIcons = "obrazekjavascript.png",
-                    DescCategory = "opis Java"
-                },
-                new Category()
-                {
-                    CategoryId = 3,
-                    nameCategory = "php",
-                    FileNameIcons = "obrazekjquery.png",
-                    DescCategory = "opis php"
-                },
-                new Category()
-                {
-                    CategoryId = 4,
-                    nameCategory = "html",
-                    FileNameIcons = "obrazekhtml.png",
-                    DescCategory = "opis html"
-                },
-                new Category()
-                {
-                    CategoryId = 4,
-                    nameCategory = "Css",
-                    FileNameIcons = "obrazekcss.png",
-                    DescCategory = "opis Css"
-                },
-                new Category()
-                {
-                    CategoryId = 4,
-                    nameCategory = "xml",
-                    FileNameIcons = "obrazekxml.png",
-                    DescCategory = "opis xml"
-                },
-                new Category()
-                {
-                    CategoryId = 5,
-                    nameCategory = "C#",
-                    FileNameIcons = "obrazekcsharp.png",
-                    DescCategory = "C# xml"
-                },
-
-
+                new Kategoria() { KategoriaId=1, NazwaKategorii="Asp.Net", NazwaPlikuIkony="aspnet.png", OpisKategorii="programowanie w asp net" },
+                new Kategoria() { KategoriaId=2, NazwaKategorii="JavaScript", NazwaPlikuIkony="javascript.png", OpisKategorii="skryptowy język programowania" },
+                new Kategoria() { KategoriaId=3, NazwaKategorii="jQuery", NazwaPlikuIkony="jquery.png", OpisKategorii="lekka biblioteka programistyczna dla języka JavaScript" },
+                new Kategoria() { KategoriaId=4, NazwaKategorii="Html5", NazwaPlikuIkony="html.png", OpisKategorii="język wykorzystywany do tworzenia i prezentowania stron internetowych www" },
+                new Kategoria() { KategoriaId=5, NazwaKategorii="Css3", NazwaPlikuIkony="css.png", OpisKategorii="język służący do opisu formy prezentacji (wyświetlania) stron www" },
+                new Kategoria() { KategoriaId=6, NazwaKategorii="Xml", NazwaPlikuIkony="xml.png", OpisKategorii="uniwersalny język znaczników przeznaczony do reprezentowania różnych danych w strukturalizowany sposób" },
+                new Kategoria() { KategoriaId=7, NazwaKategorii="C#", NazwaPlikuIkony="csharp.png", OpisKategorii="obiektowy język programowania zaprojektowany dla platformy .Net" }
             };
 
-
-            katerogie.ForEach(k => context.Categories.AddOrUpdate(k));
+            kategorie.ForEach(k => context.Kategorie.AddOrUpdate(k));
             context.SaveChanges();
 
-
-            var kursy = new List<Course>
+            var kursy = new List<Kurs>
             {
-                new Course(){ CourseId = 1 ,AuthorCourse = "Tomek", TitleCourse = "Asp.net mvc",CategoryId = 1,Price = 99 , Bestseller = true , ImgName = "obrazekcsharp.png",
-                    AddDate = DateTime.Now, Desc = "opis Kursu"},
-                new Course(){ CourseId = 2 , AuthorCourse = "Jacek", TitleCourse = "Asp.net mvc2",CategoryId = 1,Price = 100 , Bestseller = true , ImgName = "obrazekxml.png",
-                    AddDate = DateTime.Now, Desc = "opis Kursu"},
-                new Course(){ CourseId = 3 ,AuthorCourse = "Irek", TitleCourse = "Asp.net mvc1",CategoryId = 1,Price = 120 , Bestseller = false , ImgName = "obrazekcsharp.png",
-                    AddDate = DateTime.Now, Desc = "opis Kursu"},
-                new Course(){ CourseId = 4 , AuthorCourse = "romek", TitleCourse = "Asp.net mvc4",CategoryId = 1,Price = 150 , Bestseller = false , ImgName = "obrazekcss.png",
-                    AddDate = DateTime.Now, Desc = "opis Kursu"},
+                new Kurs() { KursId=1, AutorKursu="Mariusz", TytulKursu="Asp.Net", KategoriaId=1, CenaKursu=0, Bestseller=true, NazwaPlikuObrazka="obrazekaspnet.png",
+                DataDodania = DateTime.Now, OpisKursu="Kurs ASP.NET - doskonała platforma do tworzenia dynamicznych aplikacji internetowych. Kurs jest przeznaczony dla wszystkich osób, które chcą nauczyć się od podstaw tworzenia stron internetowych wykorzystując technologię ASP-NET."},
+                new Kurs() { KursId=2, AutorKursu="Mariusz", TytulKursu="Asp.Net Mvc", KategoriaId=1, CenaKursu=0, Bestseller=true, NazwaPlikuObrazka="obrazekmvc.png",
+                DataDodania = DateTime.Now, OpisKursu="Kurs ASP.NET MVC - przeznaczony jest dla wszystkich osób, które chcą nauczyć się od podstaw tworzenia stron internetowych wykorzystując technologię ASP-NET MVC."},
+                new Kurs() { KursId=3, AutorKursu="Mariusz", TytulKursu="Asp.Net Mvc - Sklep Internetowy", KategoriaId=1, CenaKursu=100, Bestseller=true, NazwaPlikuObrazka="obrazekmvc2.png",
+                DataDodania = DateTime.Now, OpisKursu="Kurs Asp.Net Mvc - Sklep Internetowy - to praktyczne rozwiązanie wykorzystujące technologię Asp.Net Mvc pokazujące krok po kroku budowanie serwisu internetowego sprzedającego kursy on-line"},
+
+                new Kurs() { KursId=4, AutorKursu="Mariusz", TytulKursu="JavaScript", KategoriaId=2, CenaKursu=70, Bestseller=false, NazwaPlikuObrazka="obrazekjavascript.png",
+                DataDodania = DateTime.Now, OpisKursu="Kurs JavaScript - skryptowy język programowania"},
+                new Kurs() { KursId=5, AutorKursu="Mariusz", TytulKursu="jQuery", KategoriaId=3, CenaKursu=90, Bestseller=true, NazwaPlikuObrazka="obrazekjquery.png",
+                DataDodania = DateTime.Now, OpisKursu="Kurs jQuery - lekka biblioteka programistyczna dla języka JavaScript"},
+                new Kurs() { KursId=6, AutorKursu="Mariusz", TytulKursu="Html5", KategoriaId=4, CenaKursu=70, Bestseller=false, NazwaPlikuObrazka="obrazekhtml.png",
+                DataDodania = DateTime.Now, OpisKursu="Kurs Html5 - język wykorzystywany do tworzenia i prezentowania stron internetowych www"},
+
+                new Kurs() { KursId=7, AutorKursu="Mariusz", TytulKursu="Css3", KategoriaId=5, CenaKursu=70, Bestseller=false, NazwaPlikuObrazka="obrazekcss.png",
+                DataDodania = DateTime.Now, OpisKursu="Kurs Css3 - język służący do opisu formy prezentacji (wyświetlania) stron www"},
+                new Kurs() { KursId=8, AutorKursu="Mariusz", TytulKursu="Xml", KategoriaId=6, CenaKursu=60, Bestseller=false, NazwaPlikuObrazka="obrazekxml.png",
+                DataDodania = DateTime.Now, OpisKursu="Kurs Xml - uniwersalny język znaczników przeznaczony do reprezentowania różnych danych w strukturalizowany sposób"},
+                new Kurs() { KursId=9, AutorKursu="Mariusz", TytulKursu="C#", KategoriaId=7, CenaKursu=90, Bestseller=true, NazwaPlikuObrazka="obrazekcsharp.png",
+                DataDodania = DateTime.Now, OpisKursu="Kurs C# - obiektowy język programowania zaprojektowany dla platformy .Net"}
 
             };
+            kursy.ForEach(k => context.Kursy.AddOrUpdate(k));
+            context.SaveChanges();
 
-            kursy.ForEach(k => context.Courses.AddOrUpdate(k));
+            kursy.ForEach(k => context.Kursy.AddOrUpdate(k));
             context.SaveChanges();
         }
     }

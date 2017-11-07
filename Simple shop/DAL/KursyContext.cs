@@ -8,27 +8,27 @@ using Simple_shop.Models;
 
 namespace Simple_shop.DAL
 {
-    public class CourseContext : DbContext
+    public class KursyContext : DbContext
     {
-        public CourseContext() : base("CoursyContext")
+        public KursyContext() : base("KursyContext")
         {
             
         }
 
-        static CourseContext()
+        static KursyContext()
         {
-            Database.SetInitializer<CourseContext>(new KursyInitializer());
+            Database.SetInitializer<KursyContext>(new KursyInitializer());
         }
 
-        public static CourseContext Create()
-        {
-            return new CourseContext();
-        }
+        //public static KursyContext Create()
+        //{
+        //    return new KursyContext();
+        //}
 
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Orders> Orderss { get; set; }
-        public DbSet<PositionOrder> PositionOrders { get; set; }
+        public virtual DbSet<Kurs> Kursy { get; set; }
+        public virtual DbSet<Kategoria> Kategorie { get; set; }
+        public virtual DbSet<Zamowienie> Zamowienia { get; set; }
+        public DbSet<PozycjaZamowienia> PozycjeZamowienia { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

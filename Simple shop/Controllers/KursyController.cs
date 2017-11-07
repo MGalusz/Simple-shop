@@ -9,7 +9,7 @@ namespace Simple_shop.Controllers
 {
     public class KursyController : Controller
     {
-        private CourseContext db = new CourseContext();
+        private KursyContext db = new KursyContext();
         // GET: Kursy
         public ActionResult Index()
         {
@@ -19,9 +19,9 @@ namespace Simple_shop.Controllers
         public ActionResult Lista(string nazwaKategori)
         {
 
-            var kursy = db.Courses.ToList();
-          //  var kategoria = db.Categories.Include("Courses").Where(k => k.nameCategory.ToUpper() == nazwaKategori.ToUpper()).Single();
-            //var kursy = kategoria.Coursy.ToList();
+            // var kursy = db.Kursy.ToList();
+            var kategoria = db.Kategorie.Include("Kursy").Where(k => k.NazwaKategorii.ToUpper() == nazwaKategori.ToUpper()).Single();
+            var kursy = kategoria.Kursy.ToList();
             return View(kursy);
         }
         public ActionResult Sczegoly(string id)
@@ -32,7 +32,7 @@ namespace Simple_shop.Controllers
         [ChildActionOnly]
         public ActionResult KategorieMenu()
         {
-            var kategorie = db.Categories.ToList();
+            var kategorie = db.Kategorie.ToList();
 
             return PartialView("_KategorieMenu", kategorie);
         }

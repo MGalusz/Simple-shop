@@ -7,13 +7,13 @@ namespace Simple_shop.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class usunieciePolaTest : IMigrationMetadata
+    public sealed partial class inicjalizacja : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(usunieciePolaTest));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(inicjalizacja));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710311033414_usunieciePolaTest"; }
+            get { return "201711071501224_inicjalizacja"; }
         }
         
         string IMigrationMetadata.Source

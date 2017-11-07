@@ -13,14 +13,14 @@ namespace Simple_shop.Controllers
     public class HomeController : Controller
     {
       
-        private  CourseContext db = new CourseContext();
+        private  KursyContext db = new KursyContext();
         public ActionResult Index()
         {
-            var kategoire = db.Categories.ToList();
+            var kategoire = db.Kategorie.ToList();
 
-            var nowosci = db.Courses.Where(x => !x.Hidden).OrderByDescending(x => x.AddDate).Take(3).ToList();
+            var nowosci = db.Kursy.Where(x => !x.Ukryty).OrderByDescending(x => x.DataDodania).Take(3).ToList();
 
-            var bestsellery = db.Courses.Where(x => !x.Hidden && x.Bestseller).OrderBy(x => Guid.NewGuid()).Take(3)
+            var bestsellery = db.Kursy.Where(x => !x.Ukryty && x.Bestseller).OrderBy(x => Guid.NewGuid()).Take(3)
                 .ToList();
 
             var vm = new HomeVM()

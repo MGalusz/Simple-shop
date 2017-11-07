@@ -4,16 +4,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Simple_shop.Models
 {
-    public class Category
+    public class Kategoria
     {
-        public int  CategoryId { get; set; }
+        public int  KategoriaId { get; set; }
         [Required(ErrorMessage = "Wprowadz nazwę kategorii")]
         [StringLength(100)]
-        public string nameCategory { get; set; }
+        public string NazwaKategorii { get; set; }
         [Required(ErrorMessage = "Wprowadz opis kategorii")]
-        public string DescCategory { get; set; }
-        public string FileNameIcons { get; set; }
+        public string OpisKategorii { get; set; }
+        public string NazwaPlikuIkony { get; set; }
 
-        public virtual ICollection<Course> Coursy { get; set; }
+        public virtual ICollection<Kurs> Kursy { get; set; }
     }
 }
