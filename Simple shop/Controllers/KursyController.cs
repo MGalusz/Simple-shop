@@ -24,9 +24,10 @@ namespace Simple_shop.Controllers
             var kursy = kategoria.Kursy.ToList();
             return View(kursy);
         }
-        public ActionResult Sczegoly(string id)
+        public ActionResult Sczegoly(int id)
         {
-            return View();
+            var kurs = db.Kursy.Find(id);
+            return View(kurs);
         }
 
         [ChildActionOnly]

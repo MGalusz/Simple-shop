@@ -14,6 +14,16 @@ namespace Simple_shop
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "KursySzczegoly",
+                url: "kurs-{id}.html",
+                defaults: new { controller = "Kursy", action = "Szczegoly" });
+
+            routes.MapRoute(
+                name: "KursyList",
+                url: "Kategoria/{nazwaKategori}",
+                defaults: new { controller = "Kursy", action = "Lista" });
+
+            routes.MapRoute(
                 name: "StronyStatyczne",
                 url: "strony/{nazwa}.html",
                 defaults: new { controller = "Home", action = "StronyStatyczne"});
