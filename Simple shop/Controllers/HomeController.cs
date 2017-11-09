@@ -37,5 +37,8 @@ namespace Simple_shop.Controllers
         {
             return View(nazwa);
         }
+
+
     }
+
 }
