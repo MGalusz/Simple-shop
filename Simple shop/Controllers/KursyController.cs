@@ -39,5 +39,12 @@ namespace Simple_shop.Controllers
 
             return PartialView("_KategorieMenu", kategorie);
         }
+
+        public ActionResult KursyPodpowiedzi(string term)
+        {
+            var kursy = db.Kursy.Where(a => !a.Ukryty && a.TytulKursu.ToLower().Contains(term.ToLower()))
+                .Take(5).Select(a => new {label = a.TytulKursu});
+            return Json(kursy, JsonRequestBehavior.AllowGet);
+        }
     }
 }
