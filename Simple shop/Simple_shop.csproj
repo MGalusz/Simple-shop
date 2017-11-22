@@ -291,6 +291,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KoszykController.cs" />
     <Compile Include="Controllers\KursyController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\KursyContext.cs" />
     <Compile Include="DAL\KursyInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -332,6 +333,7 @@
     <Compile Include="ViewModels\HomeVM.cs" />
     <Compile Include="ViewModels\KoszykUsuwanieVM.cs" />
     <Compile Include="ViewModels\KoszykVM.cs" />
+    <Compile Include="ViewModels\MenageVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -367,6 +369,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Koszyk\Zaplac.cshtml" />
     <Content Include="Views\Koszyk\PotwierdzenieZamowienia.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Shared\_ManageLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
