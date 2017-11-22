@@ -11,6 +11,10 @@ namespace Simple_shop.Models
 
         public int ZamowienieID { get; set; }
 
+        public string UserId { get; set; }
+
+        public virtual ApplicationUser User { get; set; }
+
         [Required(ErrorMessage = "Wprowadz imię")]
         [StringLength(50)]
         public string Imie { get; set; }

@@ -314,6 +314,10 @@
     <Compile Include="Migrations\201711211544460_DodanieAspIdentity.Designer.cs">
       <DependentUpon>201711211544460_DodanieAspIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711221430015_Zamowienia.cs" />
+    <Compile Include="Migrations\201711221430015_Zamowienia.Designer.cs">
+      <DependentUpon>201711221430015_Zamowienia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DaneUzytkownika.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -361,6 +365,8 @@
     <Content Include="Views\Koszyk\Index.cshtml" />
     <Content Include="Views\Shared\_RightSectionLayout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Koszyk\Zaplac.cshtml" />
+    <Content Include="Views\Koszyk\PotwierdzenieZamowienia.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -377,6 +383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711211544460_DodanieAspIdentity.resx">
       <DependentUpon>201711211544460_DodanieAspIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711221430015_Zamowienia.resx">
+      <DependentUpon>201711221430015_Zamowienia.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
