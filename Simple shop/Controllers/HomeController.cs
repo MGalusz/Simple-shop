@@ -8,6 +8,8 @@ using Simple_shop.Models;
 using System.Dynamic;
 using Simple_shop.Infrastructure;
 using Simple_shop.ViewModels;
+using NLog;
+using System.Diagnostics;
 
 namespace Simple_shop.Controllers
 {

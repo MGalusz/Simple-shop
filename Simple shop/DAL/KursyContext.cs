@@ -4,11 +4,12 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Simple_shop.Models;
 
 namespace Simple_shop.DAL
 {
-    public class KursyContext : DbContext
+    public class KursyContext : IdentityDbContext<ApplicationUser>
     {
         public KursyContext() : base("KursyContext")
         {
@@ -20,10 +21,10 @@ namespace Simple_shop.DAL
             Database.SetInitializer<KursyContext>(new KursyInitializer());
         }
 
-        //public static KursyContext Create()
-        //{
-        //    return new KursyContext();
-        //}
+        public static KursyContext Create()
+        {
+            return new KursyContext();
+        }
 
         public virtual DbSet<Kurs> Kursy { get; set; }
         public virtual DbSet<Kategoria> Kategorie { get; set; }
