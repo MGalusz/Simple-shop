@@ -24,7 +24,7 @@ namespace Simple_shop.Controllers
     public class ManageController : Controller
     {
         //private static Logger logger = LogManager.GetCurrentClassLogger();
-        //private KursyContext db;
+        private KursyContext db = new KursyContext();
         //private IMailService mailService;
 
         public enum ManageMessageId
@@ -162,45 +162,46 @@ namespace Simple_shop.Controllers
                 await user.GenerateUserIdentityAsync(UserManager));
         }
 
-        //    public ActionResult ListaZamowien()
-        //    {
-        //        var name = User.Identity.Name;
-        //        logger.Info("Admin zamowienia | " + name);
 
-        //        bool isAdmin = User.IsInRole("Admin");
-        //        ViewBag.UserIsAdmin = isAdmin;
+        public ActionResult ListaZamowien()
+        {
+          //  var name = User.Identity.Name;
+          //  logger.Info("Admin zamowienia | " + name);
 
-        //        IEnumerable<Zamowienie> zamowieniaUzytkownika;
+            bool isAdmin = User.IsInRole("Admin");
+            ViewBag.UserIsAdmin = isAdmin;
 
-        //        // Dla administratora zwracamy wszystkie zamowienia
-        //        if (isAdmin)
-        //        {
-        //            zamowieniaUzytkownika = db.Zamowienia.Include("PozycjeZamowienia").OrderByDescending(o => o.DataDodania).ToArray();
-        //        }
-        //        else
-        //        {
-        //            var userId = User.Identity.GetUserId();
-        //            zamowieniaUzytkownika = db.Zamowienia.Where(o => o.UserId == userId).Include("PozycjeZamowienia").OrderByDescending(o => o.DataDodania).ToArray();
-        //        }
+            IEnumerable<Zamowienie> zamowieniaUzytkownika;
 
-        //        return View(zamowieniaUzytkownika);
-        //    }
+            // Dla administratora zwracamy wszystkie zamowienia
+            if (isAdmin)
+            {
+                zamowieniaUzytkownika = db.Zamowienia.Include("PozycjeZamowienia").OrderByDescending(o => o.DataDodania).ToArray();
+            }
+            else
+            {
+                var userId = User.Identity.GetUserId();
+                zamowieniaUzytkownika = db.Zamowienia.Where(o => o.UserId == userId).Include("PozycjeZamowienia").OrderByDescending(o => o.DataDodania).ToArray();
+            }
 
-        //    [HttpPost]
-        //    [Authorize(Roles = "Admin")]
-        //    public StanZamowienia ZmianaStanuZamowienia(Zamowienie zamowienie)
-        //    {
-        //        Zamowienie zamowienieDoModyfikacji = db.Zamowienia.Find(zamowienie.ZamowienieID);
-        //        zamowienieDoModyfikacji.StanZamowienia = zamowienie.StanZamowienia;
-        //        db.SaveChanges();
+            return View(zamowieniaUzytkownika);
+        }
 
-        //        if (zamowienieDoModyfikacji.StanZamowienia == StanZamowienia.Zrealizowane)
-        //        {
-        //            this.mailService.WyslanieZamowienieZrealizowaneEmail(zamowienieDoModyfikacji);
-        //        }
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public StanZamowienia ZmianaStanuZamowienia(Zamowienie zamowienie)
+        {
+            Zamowienie zamowienieDoModyfikacji = db.Zamowienia.Find(zamowienie.ZamowienieID);
+            zamowienieDoModyfikacji.StanZamowienia = zamowienie.StanZamowienia;
+            db.SaveChanges();
 
-        //        return zamowienie.StanZamowienia;
-        //    }
+            //if (zamowienieDoModyfikacji.StanZamowienia == StanZamowienia.Zrealizowane)
+            //{
+            //    this.mailService.WyslanieZamowienieZrealizowaneEmail(zamowienieDoModyfikacji);
+            //}
+
+            return zamowienie.StanZamowienia;
+        }
 
         //    [Authorize(Roles = "Admin")]
         //    public ActionResult DodajKurs(int? kursId, bool? potwierdzenie)
