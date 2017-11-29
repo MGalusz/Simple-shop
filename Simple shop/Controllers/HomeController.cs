@@ -17,9 +17,12 @@ namespace Simple_shop.Controllers
     {
       
         private  KursyContext db = new KursyContext();
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         public ActionResult Index()
         {
-
+            //var name = User.Identity.Name;
+            //logger.Info("Strona główna | " + name);
+            logger.Info("Strona główna jesteś na stronie głownej");
             ICacheProvider cache = new DefaultCachePrrovider();
 
             List<Kategoria> kategoire;

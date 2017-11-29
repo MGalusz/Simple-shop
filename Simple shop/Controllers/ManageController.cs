@@ -165,8 +165,8 @@ namespace Simple_shop.Controllers
 
         public ActionResult ListaZamowien()
         {
-          //  var name = User.Identity.Name;
-          //  logger.Info("Admin zamowienia | " + name);
+            //  var name = User.Identity.Name;
+            //  logger.Info("Admin zamowienia | " + name);
 
             bool isAdmin = User.IsInRole("Admin");
             ViewBag.UserIsAdmin = isAdmin;
@@ -203,137 +203,137 @@ namespace Simple_shop.Controllers
             return zamowienie.StanZamowienia;
         }
 
-        //    [Authorize(Roles = "Admin")]
-        //    public ActionResult DodajKurs(int? kursId, bool? potwierdzenie)
-        //    {
-        //        Kurs kurs;
-        //        if (kursId.HasValue)
-        //        {
-        //            ViewBag.EditMode = true;
-        //            kurs = db.Kursy.Find(kursId);
-        //        }
-        //        else
-        //        {
-        //            ViewBag.EditMode = false;
-        //            kurs = new Kurs();
-        //        }
+        [Authorize(Roles = "Admin")]
+        public ActionResult DodajKurs(int? kursId, bool? potwierdzenie)
+        {
+            Kurs kurs;
+            if (kursId.HasValue)
+            {
+                ViewBag.EditMode = true;
+                kurs = db.Kursy.Find(kursId);
+            }
+            else
+            {
+                ViewBag.EditMode = false;
+                kurs = new Kurs();
+            }
 
-        //        var result = new EditKursViewModel();
-        //        result.Kategorie = db.Kategorie.ToList();
-        //        result.Kurs = kurs;
-        //        result.Potwierdzenie = potwierdzenie;
+            var result = new EditKursVM();
+            result.Kategorie = db.Kategorie.ToList();
+            result.Kurs = kurs;
+            result.Potwierdzenie = potwierdzenie;
 
-        //        return View(result);
-        //    }
+            return View(result);
+        }
 
-        //    [HttpPost]
-        //    [Authorize(Roles = "Admin")]
-        //    public ActionResult DodajKurs(EditKursViewModel model, HttpPostedFileBase file)
-        //    {
-        //        if (model.Kurs.KursId > 0)
-        //        {
-        //            // modyfikacja kursu
-        //            db.Entry(model.Kurs).State = EntityState.Modified;
-        //            db.SaveChanges();
-        //            return RedirectToAction("DodajKurs", new { potwierdzenie = true });
-        //        }
-        //        else
-        //        {
-        //            // Sprawdzenie, czy użytkownik wybrał plik
-        //            if (file != null && file.ContentLength > 0)
-        //            {
-        //                if (ModelState.IsValid)
-        //                {
-        //                    // Generowanie pliku
-        //                    var fileExt = Path.GetExtension(file.FileName);
-        //                    var filename = Guid.NewGuid() + fileExt;
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult DodajKurs(EditKursVM model, HttpPostedFileBase file)
+        {
+            if (model.Kurs.KursId > 0)
+            {
+                // modyfikacja kursu
+                db.Entry(model.Kurs).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("DodajKurs", new { potwierdzenie = true });
+            }
+            else
+            {
+                // Sprawdzenie, czy użytkownik wybrał plik
+                if (file != null && file.ContentLength > 0)
+                {
+                    if (ModelState.IsValid)
+                    {
+                        // Generowanie pliku
+                        var fileExt = Path.GetExtension(file.FileName);
+                        var filename = Guid.NewGuid() + fileExt;
 
-        //                    var path = Path.Combine(Server.MapPath(AppConfig.ObrazkiFolderWzgledny), filename);
-        //                    file.SaveAs(path);
+                        var path = Path.Combine(Server.MapPath(AppConfig.ObrazkiKategoriFolderzgledny), filename);
+                        file.SaveAs(path);
 
-        //                    model.Kurs.NazwaPlikuObrazka = filename;
-        //                    model.Kurs.DataDodania = DateTime.Now;
+                        model.Kurs.NazwaPlikuObrazka = filename;
+                        model.Kurs.DataDodania = DateTime.Now;
 
-        //                    db.Entry(model.Kurs).State = EntityState.Added;
-        //                    db.SaveChanges();
+                        db.Entry(model.Kurs).State = EntityState.Added;
+                        db.SaveChanges();
 
-        //                    return RedirectToAction("DodajKurs", new { potwierdzenie = true });
-        //                }
-        //                else
-        //                {
-        //                    var kategorie = db.Kategorie.ToList();
-        //                    model.Kategorie = kategorie;
-        //                    return View(model);
-        //                }
-        //            }
-        //            else
-        //            {
-        //                ModelState.AddModelError("", "Nie wskazano pliku");
-        //                var kategorie = db.Kategorie.ToList();
-        //                model.Kategorie = kategorie;
-        //                return View(model);
-        //            }
-        //        }
+                        return RedirectToAction("DodajKurs", new { potwierdzenie = true });
+                    }
+                    else
+                    {
+                        var kategorie = db.Kategorie.ToList();
+                        model.Kategorie = kategorie;
+                        return View(model);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Nie wskazano pliku");
+                    var kategorie = db.Kategorie.ToList();
+                    model.Kategorie = kategorie;
+                    return View(model);
+                }
+            }
 
-        //    }
+        }
 
-        //    [Authorize(Roles = "Admin")]
-        //    public ActionResult UkryjKurs(int kursId)
-        //    {
-        //        var kurs = db.Kursy.Find(kursId);
-        //        kurs.Ukryty = true;
-        //        db.SaveChanges();
+        [Authorize(Roles = "Admin")]
+        public ActionResult UkryjKurs(int kursId)
+        {
+            var kurs = db.Kursy.Find(kursId);
+            kurs.Ukryty = true;
+            db.SaveChanges();
 
-        //        return RedirectToAction("DodajKurs", new { potwierdzenie = true });
-        //    }
+            return RedirectToAction("DodajKurs", new { potwierdzenie = true });
+        }
 
-        //    [Authorize(Roles = "Admin")]
-        //    public ActionResult PokazKurs(int kursId)
-        //    {
-        //        var kurs = db.Kursy.Find(kursId);
-        //        kurs.Ukryty = false;
-        //        db.SaveChanges();
+        [Authorize(Roles = "Admin")]
+        public ActionResult PokazKurs(int kursId)
+        {
+            var kurs = db.Kursy.Find(kursId);
+            kurs.Ukryty = false;
+            db.SaveChanges();
 
-        //        return RedirectToAction("DodajKurs", new { potwierdzenie = true });
-        //    }
+            return RedirectToAction("DodajKurs", new { potwierdzenie = true });
+        }
 
-        //    [AllowAnonymous]
-        //    public ActionResult WyslaniePotwierdzenieZamowieniaEmail(int zamowienieId, string nazwisko)
-        //    {
-        //        var zamowienie = db.Zamowienia.Include("PozycjeZamowienia").Include("PozycjeZamowienia.Kurs")
-        //                           .SingleOrDefault(o => o.ZamowienieID == zamowienieId && o.Nazwisko == nazwisko);
+        //[AllowAnonymous]
+        //public ActionResult WyslaniePotwierdzenieZamowieniaEmail(int zamowienieId, string nazwisko)
+        //{
+        //    var zamowienie = db.Zamowienia.Include("PozycjeZamowienia").Include("PozycjeZamowienia.Kurs")
+        //                       .SingleOrDefault(o => o.ZamowienieID == zamowienieId && o.Nazwisko == nazwisko);
 
-        //        if (zamowienie == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+        //    if (zamowienie == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
 
-        //        PotwierdzenieZamowieniaEmail email = new PotwierdzenieZamowieniaEmail();
-        //        email.To = zamowienie.Email;
-        //        email.From = "mariuszjurczenko@gmail.com";
-        //        email.Wartosc = zamowienie.WartoscZamowienia;
-        //        email.NumerZamowienia = zamowienie.ZamowienieID;
-        //        email.PozycjeZamowienia = zamowienie.PozycjeZamowienia;
-        //        email.sciezkaObrazka = AppConfig.ObrazkiFolderWzgledny;
-        //        email.Send();
+        //    PotwierdzenieZamowieniaEmail email = new PotwierdzenieZamowieniaEmail();
+        //    email.To = zamowienie.Email;
+        //    email.From = "mariuszjurczenko@gmail.com";
+        //    email.Wartosc = zamowienie.WartoscZamowienia;
+        //    email.NumerZamowienia = zamowienie.ZamowienieID;
+        //    email.PozycjeZamowienia = zamowienie.PozycjeZamowienia;
+        //    email.sciezkaObrazka = AppConfig.Opra;
+        //    email.Send();
 
-        //        return new HttpStatusCodeResult(HttpStatusCode.OK);
-        //    }
-
-        //    [AllowAnonymous]
-        //    public ActionResult WyslanieZamowienieZrealizowaneEmail(int zamowienieId, string nazwisko)
-        //    {
-        //        var zamowienie = db.Zamowienia.Include("PozycjeZamowienia").Include("PozycjeZamowienia.Kurs")
-        //                              .SingleOrDefault(o => o.ZamowienieID == zamowienieId && o.Nazwisko == nazwisko);
-
-        //        if (zamowienie == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-
-        //        ZamowienieZrealizowaneEmail email = new ZamowienieZrealizowaneEmail();
-        //        email.To = zamowienie.Email;
-        //        email.From = "mariuszjurczenko@gmail.com";
-        //        email.NumerZamowienia = zamowienie.ZamowienieID;
-        //        email.Send();
-
-        //        return new HttpStatusCodeResult(HttpStatusCode.OK);
-        //    }
+        //    return new HttpStatusCodeResult(HttpStatusCode.OK);
         //}
 
-    }
+        //[AllowAnonymous]
+        //public ActionResult WyslanieZamowienieZrealizowaneEmail(int zamowienieId, string nazwisko)
+        //{
+        //    var zamowienie = db.Zamowienia.Include("PozycjeZamowienia").Include("PozycjeZamowienia.Kurs")
+        //                          .SingleOrDefault(o => o.ZamowienieID == zamowienieId && o.Nazwisko == nazwisko);
+
+        //    if (zamowienie == null) return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+        //    ZamowienieZrealizowaneEmail email = new ZamowienieZrealizowaneEmail();
+        //    email.To = zamowienie.Email;
+        //    email.From = "mariuszjurczenko@gmail.com";
+        //    email.NumerZamowienia = zamowienie.ZamowienieID;
+        //    email.Send();
+
+        //    return new HttpStatusCodeResult(HttpStatusCode.OK);
+        //}
+   // }
+
+}
 }
